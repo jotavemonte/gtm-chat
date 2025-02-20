@@ -109,6 +109,14 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId\u003d*"
+              },
+              {
+                "type": 1,
+                "string": "https://config.gorgias.chat/bundle-loader/*"
+              },
+              {
+                "type": 1,
+                "string": "https://bundle.dyn-rev.app/loader.js*"
               }
             ]
           }
