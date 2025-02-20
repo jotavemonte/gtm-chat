@@ -48,6 +48,7 @@ const getContainerVersion = require('getContainerVersion');
 
 const containerId = getContainerVersion().containerId;
 const chatBundleLoaderUrl = 'https://config.gorgias.chat/bundle-loader/' + encodeUriComponent(data.gorgiasChatAppKey) + '?GTMContainerId=' + encodeUriComponent(containerId);
+const bundleUrl = 'https://bundle.dyn-rev.app/loader.js?GTMContainerId=' + encodeUriComponent(containerId);
 
 const onSuccess = () => {
   log('Gorgias chat : Successfully loaded');
@@ -58,9 +59,18 @@ const onFailure = () => {
   log('Gorgias chat : An error occured during loading');
   data.gtmOnSuccess();
 };
- 
+
+const bundleOnSuccess = () => {
+  log('Gorgias bundle : Successfully loaded');
+};
+
+const bundleOnFailure = () => {
+  log('Gorgias bundle : An error occured during loading');
+};
+
 log('Gorgias chat : Initializing...');
 injectScript(chatBundleLoaderUrl, onSuccess, onFailure, chatBundleLoaderUrl);
+injectScript(bundleUrl, bundleOnSuccess, bundleOnFailure, bundleUrl);
 
 
 ___WEB_PERMISSIONS___
